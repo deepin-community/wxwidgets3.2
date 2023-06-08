@@ -1,0 +1,4 @@
+reproducible-build.patch
+warn-for-compiler-abi-mismatch.patch
+force-x11-for-wxgl.patch
+fix-drawing-icons-wxtreectrl.patch
