@@ -3,8 +3,10 @@ Section: libs
 Priority: optional
 Build-Depends-Indep: doxygen,
                      graphviz,
-Build-Depends: debhelper-compat (= 13),
+Build-Depends: ca-certificates <!nocheck>,
+               debhelper-compat (= 13),
                gettext,
+               libcurl4-openssl-dev,
                libexpat1-dev,
                libgl-dev,
                libglu1-mesa-dev,
@@ -15,8 +17,12 @@ Build-Depends: debhelper-compat (= 13),
                libpng-dev,
                libsm-dev,
                libtiff-dev,
-               libwebkit2gtk-4.0-dev,
+               libwebkit2gtk-4.1-dev,
                libxt-dev,
+               locales-all <!nocheck>,
+               python3-httpbin <!nocheck>,
+               xauth <!nocheck>,
+               xvfb <!nocheck>,
                zlib1g-dev,
 Maintainer: wxWidgets Maintainers <team+wx@tracker.debian.org>
 Uploaders: Olly Betts <olly@survex.com>,
@@ -238,7 +244,8 @@ Package: wx3.2-doc
 Architecture: all
 Multi-Arch: foreign
 Section: doc
-Depends: ${misc:Depends},
+Depends: doxygen-awesome-css,
+         ${misc:Depends},
 Suggests: doc-base,
           www-browser,
 Description: wxWidgets Cross-platform C++ GUI toolkit (documentation)
