@@ -2,6 +2,22 @@
 
 export DEB_BUILD_MAINT_OPTIONS = hardening=+all
 
+include /usr/share/dpkg/buildopts.mk
+
+TEST_FILTER = ~[.]
+TEST_GUI_FILTER = ~[.]
+ifneq (,$(filter $(DEB_HOST_ARCH), alpha loong64 mips64el riscv64 s390x))
+TEST_FILTER += ~[special-file]
+endif
+ifneq (,$(filter $(DEB_HOST_ARCH), alpha hppa mips64el ppc64 riscv64 s390x sparc64 x32))
+TEST_GUI_FILTER += ~WebView
+endif
+ifneq (,$(filter $(DEB_HOST_ARCH), i386))
+TEST_GUI_FILTER += ~wxImage::ChangeColours
+endif
+# These are failing intermittently (font size related?)
+TEST_GUI_FILTER += ~wxDC::GetPartialTextExtent ~TextCtrlTestCase
+
 %:
 	dh $@
 
@@ -65,3 +81,17 @@ override_dh_installexamples-indep:
 	# We end up with some empty directories which only had OS X build stuff
 	# in, at least in 3.0.2.
 	find debian/wx3.2-examples -type d -empty -delete
+
+override_dh_auto_test: HOME=$(CURDIR)/debian/.debhelper/generated/_source/home
+override_dh_auto_test:
+	make -j$(DEB_BUILD_OPTION_PARALLEL) -C tests
+	python3 -m httpbin.core & export HTTPBIN_PID=$$!; RC=0; cd tests && WX_TEST_WEBREQUEST_URL="http://localhost:5000" ./test $(TEST_FILTER) || RC=1; kill -9 $${HTTPBIN_PID}; exit $$RC
+	cd tests && wxUSE_XVFB=1 xvfb-run -a ./test_gui $(TEST_GUI_FILTER)
+
+override_dh_auto_clean:
+	dh_auto_clean
+	[ -f tests/Makefile ] && make -j$(DEB_BUILD_OPTION_PARALLEL) -C tests distclean || true
+	find demos -name Makefile -delete
+	find samples -name Makefile -delete
+	find tests -name Makefile -delete
+	find utils -name Makefile -delete

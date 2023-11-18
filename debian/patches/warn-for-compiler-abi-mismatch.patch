@@ -9,7 +9,7 @@ Last-Update: 2022-07-18
 
 --- a/src/common/appbase.cpp
 +++ b/src/common/appbase.cpp
-@@ -847,6 +847,26 @@
+@@ -850,6 +850,26 @@
          wxString prog = wxString::FromAscii(optionsSignature);
          wxString progName = wxString::FromAscii(componentName);
  

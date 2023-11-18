@@ -1,3 +1,46 @@
+wxwidgets3.2 (3.2.4+dfsg-1) unstable; urgency=medium
+
+  * Update to new upstream release 3.2.4
+
+ -- Scott Talbert <swt@techie.net>  Mon, 13 Nov 2023 20:30:30 -0500
+
+wxwidgets3.2 (3.2.3+dfsg-3) unstable; urgency=medium
+
+  * Use httpbin to avoid network during tests (Closes: #1055060)
+  * Fix GUI test filter after 3.2.3+dfsg-1 changes
+
+ -- Scott Talbert <swt@techie.net>  Mon, 30 Oct 2023 20:08:17 -0400
+
+wxwidgets3.2 (3.2.3+dfsg-2) unstable; urgency=medium
+
+  * Enable wxWebRequest support
+
+ -- Scott Talbert <swt@techie.net>  Thu, 26 Oct 2023 19:57:55 -0400
+
+wxwidgets3.2 (3.2.3+dfsg-1) unstable; urgency=medium
+
+  * Update to new upstream release 3.2.3
+  * Switch to build with libwebkit2gtk-4.1-dev (libsoup3)
+  * Adjust skipped tests for new release
+
+ -- Scott Talbert <swt@techie.net>  Mon, 16 Oct 2023 19:08:14 -0400
+
+wxwidgets3.2 (3.2.2+dfsg-4) unstable; urgency=medium
+
+  * Skip more tests on specific arches (Closes: #1050238)
+  * Clean docs and tests files after build (Closes: #1048120)
+
+ -- Scott Talbert <swt@techie.net>  Wed, 23 Aug 2023 21:54:33 -0400
+
+wxwidgets3.2 (3.2.2+dfsg-3) unstable; urgency=medium
+
+  * Enable build-time unit tests
+  * Fix building examples (Closes: #1040688)
+  * Add autopkgtests (building samples for now)
+  * Unbundle doxygen-awesome-css (Closes: #1021508)
+
+ -- Scott Talbert <swt@techie.net>  Thu, 03 Aug 2023 20:31:45 -0400
+
 wxwidgets3.2 (3.2.2+dfsg-2) unstable; urgency=medium
 
   * Fix drawing of icons for non-root wxTreeCtrl items.  This
