@@ -1,3 +1,15 @@
+wxwidgets3.2 (3.2.4+dfsg-3) unstable; urgency=medium
+
+  * Fix FTBFS w/ WebKitGTK 2.43 (Closes: #1060835)
+
+ -- Scott Talbert <swt@techie.net>  Sun, 04 Feb 2024 11:57:41 -0500
+
+wxwidgets3.2 (3.2.4+dfsg-2) unstable; urgency=medium
+
+  * Enable wxLZMAInputStream (Closes: #1060313)
+
+ -- Scott Talbert <swt@techie.net>  Tue, 09 Jan 2024 18:58:08 -0500
+
 wxwidgets3.2 (3.2.4+dfsg-1) unstable; urgency=medium
 
   * Update to new upstream release 3.2.4

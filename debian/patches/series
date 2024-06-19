@@ -1,3 +1,4 @@
 reproducible-build.patch
 warn-for-compiler-abi-mismatch.patch
 force-x11-for-wxgl.patch
+1622a5c9c2f123ef27fc3a52938162a68892e725.patch
