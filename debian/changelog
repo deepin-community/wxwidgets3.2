@@ -1,3 +1,9 @@
+wxwidgets3.2 (3.2.4+dfsg-3deepin0) unstable; urgency=medium
+
+  * No source change upload against GCC 12.
+
+ -- Tianyu Chen <sweetyfish@deepin.org>  Fri, 20 Sep 2024 12:58:23 +0800
+
 wxwidgets3.2 (3.2.4+dfsg-3) unstable; urgency=medium
 
   * Fix FTBFS w/ WebKitGTK 2.43 (Closes: #1060835)
