@@ -6,10 +6,10 @@ include /usr/share/dpkg/buildopts.mk
 
 TEST_FILTER = ~[.]
 TEST_GUI_FILTER = ~[.]
-ifneq (,$(filter $(DEB_HOST_ARCH), alpha loong64 mips64el riscv64 s390x))
+ifneq (,$(filter $(DEB_HOST_ARCH), alpha hppa loong64 mips64el riscv64 s390x))
 TEST_FILTER += ~[special-file]
 endif
-ifneq (,$(filter $(DEB_HOST_ARCH), alpha hppa mips64el ppc64 riscv64 s390x sparc64 x32))
+ifneq (,$(filter $(DEB_HOST_ARCH), alpha hppa loong64 mips64el ppc64 riscv64 s390x sparc64 x32))
 TEST_GUI_FILTER += ~WebView
 endif
 ifneq (,$(filter $(DEB_HOST_ARCH), i386))
@@ -37,9 +37,9 @@ override_dh_auto_install:
 
 override_dh_install:
 	dh_install
-	rm -f debian/libwxgtk3.2-1/usr/lib/*/libwx_gtk*gl*.so.*
-	rm -f debian/libwxgtk3.2-1/usr/lib/*/libwx_gtk*media*.so.*
-	rm -f debian/libwxgtk3.2-1/usr/lib/*/libwx_gtk*webview*.so.*
+	rm -f debian/libwxgtk3.2-1t64/usr/lib/*/libwx_gtk*gl*.so.*
+	rm -f debian/libwxgtk3.2-1t64/usr/lib/*/libwx_gtk*media*.so.*
+	rm -f debian/libwxgtk3.2-1t64/usr/lib/*/libwx_gtk*webview*.so.*
 	rm -f debian/libwxgtk3.2-dev/usr/lib/*/libwx_gtk*media*.so
 	rm -f debian/libwxgtk3.2-dev/usr/lib/*/libwx_gtk*webview*.so
 
@@ -86,7 +86,11 @@ override_dh_installexamples-indep:
 override_dh_auto_test: HOME=$(CURDIR)/debian/.debhelper/generated/_source/home
 override_dh_auto_test:
 	make -j$(DEB_BUILD_OPTION_PARALLEL) -C tests
+ifneq (,$(filter $(DEB_HOST_ARCH), hppa sh4 x32))
+	cd tests && WX_TEST_WEBREQUEST_URL=0 ./test $(TEST_FILTER)
+else
 	python3 -m httpbin.core & export HTTPBIN_PID=$$!; RC=0; cd tests && WX_TEST_WEBREQUEST_URL="http://localhost:5000" ./test $(TEST_FILTER) || RC=1; kill -9 $${HTTPBIN_PID}; exit $$RC
+endif
 	cd tests && wxUSE_XVFB=1 xvfb-run -a ./test_gui $(TEST_GUI_FILTER)
 
 override_dh_auto_clean:

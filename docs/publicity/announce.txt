@@ -1,36 +1,38 @@
-November 11, 2023 -- The wxWidgets team is pleased to announce a new
+September 09, 2024 -- The wxWidgets team is pleased to announce a new
 stable release of our open source framework for the development of native
 cross-platform applications in C++.
 
-wxWidgets 3.2.4 is part of the API and ABI-stable 3.2.x release series and is
+wxWidgets 3.2.6 is part of the API and ABI-stable 3.2.x release series and is
 now available from
 
     https://www.wxwidgets.org/downloads/
 
 and
 
-    https://github.com/wxWidgets/wxWidgets/releases/v3.2.4
+    https://github.com/wxWidgets/wxWidgets/releases/v3.2.6
 
-This release comes very soon after 3.2.3 because some of the changes
-in the last release resulted in regressions fixed by this release.
-Notably, 3.2.4 fixes a critical bug which made applications using wxGTK
-but not initializing the GUI to crash (see issue #23981).
+This release contains relatively few changes compared to the previous one,
+but they include important bug fixes, such as:
 
-Other bug fixes include:
+- Fix resource leak in wxBitmapBundle in some circumstances (#24703).
+- Fix crash when using static wx libraries in a Windows DLL (#24730).
+- Fix possible crash during drag-and-drop in wxGTK (#24677).
+- Fix wxDatePickerCtrl being unusable in some locales in wxGTK (#24533).
+- Fix regression in focus handling under macOS 14+ (#24605, #24667).
+- Fix regression in wxTranslations introduced in 3.2.3 (#24297).
 
-- Fix regression in wxTranslations::AddCatalog() return value (#24019).
-- Fix possible crash and too high CPU use when using EGL (#24018).
-- Fix losing clipboard contents when clearing a different selection (#23988).
-- Fix possible crash when dragging pages in wxAuiNotebook (#24027).
-- Fix refreshing multiple selection items in generic wxListCtrl.
-- Fix showing windows for background apps under macOS Sonoma (#23893).
+Other changes include:
 
-The only new addition in this release is the possibility to create objects
-of wx legacy "dynamic arrays" class from std::initializer_list<> (#23966).
+- High DPI fixes for wxBitmapComboBox (#24563), wxDataViewCtrl (#24648),
+  wxNotebook (#24606), wxPropertyGrid (#24607), wxWizard (#24743).
+- Improve wxSlider appearance under macOS (#24532, #24539).
+- Correctly use current keyboard layout in key events in wxGTK (#24772).
+- Fix handling of ligatures in wxStyledTextCtrl in wxGTK (#13168).
+
 
 Please see the full change log for more details:
 
-https://raw.githubusercontent.com/wxWidgets/wxWidgets/v3.2.4/docs/changes.txt
+https://raw.githubusercontent.com/wxWidgets/wxWidgets/v3.2.6/docs/changes.txt
 
 This release is API and ABI-compatible with the previous 3.2.x, so
 the existing applications don't even need to be rebuilt to profit from all the
