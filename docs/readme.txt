@@ -1,4 +1,4 @@
-wxWidgets 3.2.4 Release Notes
+wxWidgets 3.2.6 Release Notes
 =============================
 
 Welcome to the new stable release of wxWidgets, a free and open source
@@ -16,7 +16,7 @@ more about wxWidgets at:
 
 Documentation is available online at:
 
-* https://docs.wxwidgets.org/3.2.4/
+* https://docs.wxwidgets.org/3.2.6/
 
 wxWidgets sources and binaries for the selected platforms are available for
 download from:
@@ -25,36 +25,38 @@ download from:
 
 or, for a more more permanent but less convenient to use link, from
 
-* https://github.com/wxWidgets/wxWidgets/releases/tag/v3.2.4/
+* https://github.com/wxWidgets/wxWidgets/releases/tag/v3.2.6/
 
-Please see https://docs.wxwidgets.org/3.2.4/overview_install.html for full
+Please see https://docs.wxwidgets.org/3.2.6/overview_install.html for full
 installation instructions.
 
 
 
-Changes since 3.2.3
+Changes since 3.2.5
 -------------------
 
-This release comes very soon after 3.2.3 because some of the changes
-in the last release resulted in regressions fixed by this release.
-Notably, 3.2.4 fixes a critical bug which made applications using wxGTK
-but not initializing the GUI to crash (see issue #23981).
+This release contains multiple bug fixes, including some regressions, as well
+as improvements to the CMake build system. Some of the most important changes:
 
-Other bug fixes include:
+- Fix resource leak in wxBitmapBundle in some circumstances (#24703).
+- Fix crash when using static wx libraries in a Windows DLL (#24730).
+- Fix possible crash during drag-and-drop in wxGTK (#24677).
+- Fix wxDatePickerCtrl being unusable in some locales in wxGTK (#24533).
+- Fix regression in focus handling under macOS 14+ (#24605, #24667).
+- Fix regression in wxTranslations introduced in 3.2.3 (#24297).
 
-- Fix regression in wxTranslations::AddCatalog() return value (#24019).
-- Fix possible crash and too high CPU use when using EGL (#24018).
-- Fix losing clipboard contents when clearing a different selection (#23988).
-- Fix possible crash when dragging pages in wxAuiNotebook (#24027).
-- Fix refreshing multiple selection items in generic wxListCtrl.
-- Fix showing windows for background apps under macOS Sonoma (#23893).
+Other changes include:
 
-The only new addition in this release is the possibility to create objects
-of wx legacy "dynamic arrays" class from std::initializer_list<> (#23966).
+- High DPI fixes for wxBitmapComboBox (#24563), wxDataViewCtrl (#24648),
+  wxNotebook (#24606), wxPropertyGrid (#24607), wxWizard (#24743).
+- Improve wxSlider appearance under macOS (#24532, #24539).
+- Correctly use current keyboard layout in key events in wxGTK (#24772).
+- Fix handling of ligatures in wxStyledTextCtrl in wxGTK (#13168).
+
 
 Please see the full change log for more details:
 
-https://raw.githubusercontent.com/wxWidgets/wxWidgets/v3.2.4/docs/changes.txt
+https://raw.githubusercontent.com/wxWidgets/wxWidgets/v3.2.6/docs/changes.txt
 
 This release is API and ABI-compatible with the previous 3.2.x releases, so
 the existing applications don't even need to be rebuilt to profit from all the
@@ -69,7 +71,7 @@ Supported Platforms
 This version of wxWidgets supports the following primary platforms:
 
 * Windows XP, Vista, 7, 8, 10 and 11 (32/64 bits).
-* Most Unix variants using the GTK+ toolkit (version 2.6 or newer)
+* Most Unix variants using the GTK toolkit (version 2.6 or newer)
 * macOS (10.10 or newer) using Cocoa (x86-64 or ARM).
 
 There is some support for the following platforms:
@@ -154,4 +156,4 @@ developed by its users and your contributions to it are always welcome!
 
 Have fun!
 
-The wxWidgets Team, November 2023
+The wxWidgets Team, September 2024

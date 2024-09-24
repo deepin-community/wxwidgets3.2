@@ -2,14 +2,14 @@ Description: Force X11 if wx GL library is loaded
 Author: Olly Betts <olly@survex.com>
 Bug: https://trac.wxwidgets.org/ticket/17702
 Bug-Debian: https://bugs.debian.org/900678
-Forwarded: no
+Forwarded: not-needed
 Last-Update: 2022-11-28
 
 --- a/src/gtk/glcanvas.cpp
 +++ b/src/gtk/glcanvas.cpp
-@@ -24,6 +24,17 @@
- #include <gdk/gdkx.h>
- #endif
+@@ -18,6 +18,17 @@
+ #include "wx/gtk/private/wrapgdk.h"
+ #include "wx/gtk/private/backend.h"
  
 +#if GTK_CHECK_VERSION(3,10,0)
 +// wxGTK's wxGLCanvas requires X11 currently, so tell GDK that so under

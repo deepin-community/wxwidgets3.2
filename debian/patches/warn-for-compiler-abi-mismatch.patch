@@ -4,7 +4,7 @@ Description: Suppress error about mismatching C++ ABI version
  suppress this error so we don't have to rebuild the entire wx world in one
  go.
 Author: Olly Betts <olly@survex.com>
-Forwarded: no
+Forwarded: not-needed
 Last-Update: 2022-07-18
 
 --- a/src/common/appbase.cpp
