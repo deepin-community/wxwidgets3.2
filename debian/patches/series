@@ -1,3 +1,4 @@
 reproducible-build.patch
 warn-for-compiler-abi-mismatch.patch
 force-x11-for-wxgl.patch
+CVE-2024-58249.patch

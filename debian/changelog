@@ -1,3 +1,10 @@
+wxwidgets3.2 (3.2.6+dfsg-2deepin2) unstable; urgency=medium
+
+  * Fix CVE-2024-58249: crash in wxWebRequestCURL when connection refused.
+    Backport upstream commit f2918a9ac823074901ce27de939baa57788beb3d.
+
+ -- deepin-ci-robot <packages@deepin.org>  Wed, 29 Apr 2026 19:10:00 +0800
+
 wxwidgets3.2 (3.2.6+dfsg-2deepin1) unstable; urgency=medium
 
   * Revert t64.
